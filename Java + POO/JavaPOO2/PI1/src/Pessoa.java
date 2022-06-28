@@ -1,9 +1,9 @@
 public class Pessoa {
-    String nome;
-    int idade;
-    String ID;
-    float peso;
-    float altura;
+    public String nome;
+    public int idade;
+    public String ID;
+    public float peso;
+    public float altura;
 
     public Pessoa () {
     }
@@ -22,7 +22,7 @@ public class Pessoa {
         this.altura = altura;
     }
 
-    public String calcularIMC(float altura, float peso) {
+    public String calcularIMC() {
         float IMCCalc = peso / (altura * altura);
         if (IMCCalc < 20) {
             return "Abaixo do peso";
@@ -30,29 +30,15 @@ public class Pessoa {
         if (IMCCalc > 25) {
             return "SobrePeso";
         }
-        return "Peso Saudável";
+            return "Peso Saudável";
     }
 
-    public boolean ehMaiorIdade(int idade) {
-        if (idade > 18) {
-            return true;
-        }
-        return false;
+    public boolean ehMaiorIdade() {
+        return idade > 18;
     }
 
     public String toString() {
-        return "" + nome + this.idade + this.ID + this.peso + this.altura;
+        float alturaEmMetros = altura/100;
+        return String.format("Nome:%s, idade:%d, ID:%s, peso:%d, altura:%d", nome, idade, ID, Math.round(peso), Math.round(altura));
     }
-
-
-
-    public static void Main (String[] args) {
-        Pessoa pessoa1 = new Pessoa();
-        Pessoa pessoa2 = new Pessoa("Fulano", 99, "01");
-        Pessoa pessoa3 = new Pessoa("Fulano", 99, "01", 54, 178);
-//        Pessoa pessoa4 = new Pessoa("Beltrano", "17");
-
-        pessoa3.ehMaiorIdade(pessoa3.idade);
-    }
-
 }
